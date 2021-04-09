@@ -1,6 +1,6 @@
 import React from "react";
 import { SVGBase, SVGBaseProps } from "./svg-base";
-import { getSVGViewBoxString } from "../utilities/style";
+import { getSVGViewBoxString } from "../../utilities/style";
 
 export const TriangleIcon = ({
   fill = "white",
