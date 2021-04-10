@@ -1,8 +1,11 @@
 import { Duration } from "luxon";
 import React, { FC, ComponentType, useEffect, useRef, useState } from "react";
 import { DateTimeFormats, DateTimeUnits } from "../config/defaults";
+import { asyncFunctionDelay } from "async-function-delay";
 
 const { Hour, Minute, Second } = DateTimeUnits;
+
+const FULL_TIME_DEFAULT = Minute * 2; //* 30;
 
 const formatTime = (
   milliseconds: number,
@@ -35,7 +38,7 @@ const handleTimerEnd = (handler?: any): any => {
  * which stops and calls an optional completeHandler callback.
  */
 export const Timer: FC<ITimerProps> = ({
-  fullTime = Minute * 30,
+  fullTime = FULL_TIME_DEFAULT,
   component,
   handleComplete
 }) => {
@@ -47,19 +50,27 @@ export const Timer: FC<ITimerProps> = ({
 
   const clearTimer = () => {
     clearInterval(timer.current);
-    setTimerOn(false);
+    // setTimerOn(false);
     // console.log("timer.current", timer.current);
   };
 
   function startTimer() {
-    setCurrentTime(Math.max(0, currentTime - Second));
+    // setCurrentTime(Math.max(0, currentTime - Second));
     setTimerOn(true);
     // console.log("timer.current", timer.current);
   }
 
+  const pauseTimer = () => {
+    // clearInterval(timer.current);
+    setTimerOn(false);
+    // console.log("timer.current", timer.current);
+  };
+
   useEffect(() => {
     const timerIntervalID = setInterval(() => {
-      setCurrentTime(Math.max(0, currentTime - Second));
+      if (timerOn) {
+        setCurrentTime(Math.max(0, currentTime - Second));
+      }
       if (currentTime <= 0) {
         clearTimer();
         handleTimerEnd(handleComplete);
@@ -69,15 +80,15 @@ export const Timer: FC<ITimerProps> = ({
     // Update the timer ID value each interval
     timer.current = timerIntervalID;
     return () => clearTimer();
-  }, [currentTime, handleComplete]);
+  }, [currentTime, handleComplete, timerOn]);
 
   const DisplayComponent = component || "span";
 
   return (
     <>
-      <div onClick={clearTimer}>pause</div>
       <div onClick={startTimer}>start</div>
       <DisplayComponent>{formatTime(currentTime)}</DisplayComponent>
+      <div onClick={pauseTimer}>pause</div>
     </>
   );
 };
