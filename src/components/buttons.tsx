@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import styled from "styled-components";
+import { styled } from "../utilities/style";
 
 import { TriangleIcon } from "../components/icons/triangle-icon";
 

@@ -55,6 +55,9 @@ export const Timer: FC<ITimerProps> = ({
   };
 
   function startTimer() {
+    if (currentTime <= 0) {
+      setCurrentTime(FULL_TIME_DEFAULT);
+    }
     // setCurrentTime(Math.max(0, currentTime - Second));
     setTimerOn(true);
     // console.log("timer.current", timer.current);

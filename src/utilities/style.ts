@@ -1,4 +1,7 @@
 import { SVGViewBox } from "../types/svg";
+import styled from "styled-components";
+const sc = styled;
+export { sc as styled };
 
 /**
  * Assume 16px base font size: (0.0625 rems per px)

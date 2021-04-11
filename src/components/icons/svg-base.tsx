@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { styled } from "../../utilities/style";
 /**
  * <svg/> and <path/> dimensions are set by the standard passed `x`, `y`, `width` and `height` attributes.
  * Final rendered dimensions are set by `styleWidth` and `styleHeight`.

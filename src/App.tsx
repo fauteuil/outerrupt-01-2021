@@ -1,6 +1,7 @@
 import React from "react";
 import { TriangleButton } from "./components/buttons";
 import { Timer } from "./components/timer";
+import { ActivityDetails } from "./components/activities/activity-details";
 
 export default function App() {
   /**
@@ -16,6 +17,7 @@ export default function App() {
     <div className="App">
       <h1>OUTERRUPT</h1>
       <Timer />
+      <ActivityDetails />
       <TriangleButton handleClick={startNextActivity} />
     </div>
   );
