@@ -1,9 +1,17 @@
 import React, { FC } from "react";
+import { useRecoilState } from "recoil";
 // import { styled } from "../../utilities/style";
 import {
   ActivityDetailsView,
   ActivityDetailsViewProps
 } from "./activity-details-view";
+
+import { selectedActivityState } from "../../state/activity";
+
+/**
+ * Look up the current activity by ID
+ */
+function getActivityDetails() {}
 
 // dummy data, pull from state.
 const detailsProps: ActivityDetailsViewProps = {
@@ -19,5 +27,15 @@ export interface ActivityDetailsProps {
 }
 //export function ActivityDetails(props: ActivityDetailsProps) {
 export function ActivityDetails() {
-  return !detailsProps?.hidden && <ActivityDetailsView {...detailsProps} />;
+  const [selectedActivityId, setSelectedActivityId] = useRecoilState(
+    selectedActivityState
+  );
+
+  console.log("selectedActivityId", selectedActivityId);
+
+  let displayComponent = null;
+  if (!detailsProps?.hidden) {
+    displayComponent = <ActivityDetailsView {...detailsProps} />;
+  }
+  return displayComponent;
 }

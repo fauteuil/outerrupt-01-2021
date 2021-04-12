@@ -6,5 +6,5 @@ import { atom, selector } from "recoil";
  */
 export const selectedActivityState = atom<string>({
   key: "selectedActivityState",
-  default: ""
+  default: "DEFAULT"
 });

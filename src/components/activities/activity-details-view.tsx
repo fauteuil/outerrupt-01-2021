@@ -9,6 +9,7 @@ const ActivityDetailsWrapper = styled.div`
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  width: 74%;
 `;
 
 const Title = styled.div`

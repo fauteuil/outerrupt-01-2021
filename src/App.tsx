@@ -1,4 +1,5 @@
 import React from "react";
+
 import { TriangleButton } from "./components/buttons";
 import { Timer } from "./components/timer";
 import { ActivityDetails } from "./components/activities/activity-details";
