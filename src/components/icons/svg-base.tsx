@@ -16,11 +16,11 @@ export interface SVGBaseProps {
   styleHeight?: number;
 }
 
-export const SVGBase = styled("svg").attrs({
+export const SVGBase = styled.svg.attrs({
   version: "1.1",
   xmlns: "http://www.w3.org/2000/svg",
   xmlnsXlink: "http://www.w3.org/1999/xlink"
-})<SVGBaseProps>`
-  height: ${(props) => (props.styleHeight ? props.styleHeight : 2)}rem;
-  width: ${(props) => (props.styleWidth ? props.styleWidth : 2)}rem;
+})`
+  height: ${(props: SVGBaseProps) => (props.styleHeight ? props.styleHeight : 2)}rem;
+  width: ${(props: SVGBaseProps) => (props.styleWidth ? props.styleWidth : 2)}rem;
 `;

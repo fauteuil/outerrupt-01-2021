@@ -1,4 +1,4 @@
-import { Duration } from "luxon";
+import { Duration } from 'luxon';
 import React, { FC, ComponentType, useEffect, useRef, useState } from "react";
 import { DateTimeFormats, DateTimeUnits } from "../config/defaults";
 import { asyncFunctionDelay } from "async-function-delay";
