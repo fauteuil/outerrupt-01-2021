@@ -1,5 +1,7 @@
 import React, { FC, ReactNode } from "react";
+
 import { styled } from "../../utilities/style";
+import { Activity } from "../../types/activity";
 
 const ActivityDetailsWrapper = styled.div`
   border: solid black 0.0625rem;
@@ -41,12 +43,9 @@ const GraphicWrapper = styled.div`
   flex-direction: column;
 `;
 
-export interface ActivityDetailsViewProps {
-  id: string;
-  title: string;
-  description: string;
-  graphic?: ReactNode;
-}
+export type ActivityDetailsViewProps = Activity & {
+  hidden?: boolean;
+};
 
 export function ActivityDetailsView({
   id,
